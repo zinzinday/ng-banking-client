@@ -1,0 +1,27 @@
+<mat-toolbar>
+  <button mat-button color="warn">Withdrawal</button>
+  <button mat-button color="primary">Deposit</button>
+  <button mat-button>Transfer</button>
+</mat-toolbar>
+<mat-tab-group>
+  <mat-tab label="Banking">
+    <ng-template matTabContent>
+      <app-finance-banking></app-finance-banking>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Currency">
+    <ng-template matTabContent>
+      <app-finance-currency></app-finance-currency>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Bank Accounts">
+    <ng-template matTabContent>
+      <app-finance-bank-account></app-finance-bank-account>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Loans">
+    <ng-template matTabContent>
+      <app-finance-loans></app-finance-loans>
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>
