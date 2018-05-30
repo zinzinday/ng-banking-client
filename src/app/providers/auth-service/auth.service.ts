@@ -4,13 +4,14 @@ import {Credential} from '../../models/credential';
 import {Profile} from '../../models/profile';
 import {map} from 'rxjs/internal/operators';
 import {HttpClient} from '@angular/common/http';
+import {LocalStoreService} from '../local-store-sevice/local-store.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private localStore: LocalStoreService) {
 
   }
 
@@ -18,20 +19,20 @@ export class AuthService {
     return !!this.credential;
   }
 
-  get credential(): Credential {
-    return JSON.parse(localStorage.getItem('credential'));
+  get credential(): Observable<Credential> {
+    return this.localStore.getItem('credential');
   }
 
-  get profile(): Profile {
-    return JSON.parse(localStorage.getItem('profile'));
+  get profile(): Observable<Profile> {
+    return this.localStore.getItem('profile');
   }
 
-  set credential(data: Credential) {
-    localStorage.setItem('credential', JSON.stringify(data));
+  set credential(data: Observable<Credential>) {
+    this.localStore.setItem('credential', data);
   }
 
-  set profile(data: Profile) {
-    localStorage.setItem('profile', JSON.stringify(data));
+  set profile(data: Observable<Profile>) {
+    this.localStore.setItem('profile', data);
   }
 
 }

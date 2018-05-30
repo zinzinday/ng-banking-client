@@ -6,3 +6,11 @@
   width: 300px;
   box-shadow: 1px 0 1px rgba(0, 0, 0, .24);
 }
+
+.mat-sidenav-container {
+  position: fixed;
+  height: 100%;
+  min-height: 100%;
+  width: 100%;
+  min-width: 100%;
+}

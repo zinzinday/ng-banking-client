@@ -14,6 +14,8 @@ export class AuthSupperGuard implements CanActivate {
 
   canActivate(next: ActivatedRouteSnapshot,
               state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    return this.auth.profile.hasSupper;
+    return this.auth.profile.pipe(map((profile: Profile) => {
+      return profile.hasSupper;
+    }));
   }
 }
