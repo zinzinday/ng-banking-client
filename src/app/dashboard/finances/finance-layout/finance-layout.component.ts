@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {LayoutService} from '../../../providers/layout-service/layout.service';
 
 @Component({
   selector: 'app-finance-layout',
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FinanceLayoutComponent implements OnInit {
 
-  constructor() { }
+  constructor(public layout: LayoutService) {
+  }
 
   ngOnInit() {
   }

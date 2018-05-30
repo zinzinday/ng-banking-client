@@ -1,15 +1,24 @@
 <mat-tab-group>
   <mat-tab label="References">
+    <ng-template mat-tab-label *ngIf="layout.isHandset">
+      <mat-icon>settings_applications</mat-icon>
+    </ng-template>
     <ng-template matTabContent>
       <app-setting-reference></app-setting-reference>
     </ng-template>
   </mat-tab>
   <mat-tab label="Security">
+    <ng-template mat-tab-label *ngIf="layout.isHandset">
+      <mat-icon>security</mat-icon>
+    </ng-template>
     <ng-template matTabContent>
       <app-setting-security></app-setting-security>
     </ng-template>
   </mat-tab>
   <mat-tab label="Profile">
+    <ng-template mat-tab-label *ngIf="layout.isHandset">
+      <mat-icon>face</mat-icon>
+    </ng-template>
     <ng-template matTabContent>
       <app-setting-profile></app-setting-profile>
     </ng-template>

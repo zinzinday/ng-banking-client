@@ -19,14 +19,13 @@ import {LayoutComponent} from './dashboard/layout/layout.component';
 import {LayoutModule} from '@angular/cdk/layout';
 import {MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatTabsModule} from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
-import { FinanceDepositComponent } from './dashboard/finances/finance-deposit/finance-deposit.component';
-import { FinanceWithdrawalComponent } from './dashboard/finances/finance-withdrawal/finance-withdrawal.component';
-import { FinanceTransferComponent } from './dashboard/finances/finance-transfer/finance-transfer.component';
-import { FinanceLayoutComponent } from './dashboard/finances/finance-layout/finance-layout.component';
-import { SettingLayoutComponent } from './dashboard/settings/setting-layout/setting-layout.component';
-import { FinanceLoansComponent } from './dashboard/finances/finance-loans/finance-loans.component';
-import {LayoutService} from './providers/layout-service/layout.service';
-import { SummaryComponent } from './dashboard/summary/summary.component';
+import {FinanceDepositComponent} from './dashboard/finances/finance-deposit/finance-deposit.component';
+import {FinanceWithdrawalComponent} from './dashboard/finances/finance-withdrawal/finance-withdrawal.component';
+import {FinanceTransferComponent} from './dashboard/finances/finance-transfer/finance-transfer.component';
+import {FinanceLayoutComponent} from './dashboard/finances/finance-layout/finance-layout.component';
+import {SettingLayoutComponent} from './dashboard/settings/setting-layout/setting-layout.component';
+import {FinanceLoansComponent} from './dashboard/finances/finance-loans/finance-loans.component';
+import {SummaryComponent} from './dashboard/summary/summary.component';
 
 @NgModule({
   declarations: [
@@ -64,9 +63,7 @@ import { SummaryComponent } from './dashboard/summary/summary.component';
     MatListModule,
     MatTabsModule
   ],
-  providers: [
-
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

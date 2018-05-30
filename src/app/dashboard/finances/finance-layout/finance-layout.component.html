@@ -5,21 +5,33 @@
 </mat-toolbar>
 <mat-tab-group>
   <mat-tab label="Banking">
+    <ng-template mat-tab-label *ngIf="layout.isHandset">
+      <mat-icon>account_balance</mat-icon>
+    </ng-template>
     <ng-template matTabContent>
       <app-finance-banking></app-finance-banking>
     </ng-template>
   </mat-tab>
   <mat-tab label="Currency">
+    <ng-template mat-tab-label *ngIf="layout.isHandset">
+      <mat-icon>attach_money</mat-icon>
+    </ng-template>
     <ng-template matTabContent>
       <app-finance-currency></app-finance-currency>
     </ng-template>
   </mat-tab>
   <mat-tab label="Bank Accounts">
+    <ng-template mat-tab-label *ngIf="layout.isHandset">
+      <mat-icon>account_balance_wallet</mat-icon>
+    </ng-template>
     <ng-template matTabContent>
       <app-finance-bank-account></app-finance-bank-account>
     </ng-template>
   </mat-tab>
   <mat-tab label="Loans">
+    <ng-template mat-tab-label *ngIf="layout.isHandset">
+      <mat-icon>monetization_on</mat-icon>
+    </ng-template>
     <ng-template matTabContent>
       <app-finance-loans></app-finance-loans>
     </ng-template>
