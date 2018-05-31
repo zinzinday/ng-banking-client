@@ -1,0 +1,99 @@
+$display: (
+  flex,
+  inline-flex
+);
+
+@each $item in $display {
+  .display-#{$item} {
+    display: $item;
+  }
+}
+
+$flex-direction: (
+  row,
+  row-reverse,
+  column,
+  column-reverse
+);
+
+@each $item in $flex-direction {
+  .flex-direction-#{$item} {
+    flex-direction: $item;
+  }
+}
+
+$justify-content: (
+  start,
+  flex-start,
+  flex-end,
+  center,
+  space-between,
+  space-around,
+  space-evenly,
+);
+
+@each $item in $justify-content {
+  .justify-content-#{$item} {
+    justify-content: $item;
+  }
+}
+
+$align-items: (
+  flex-start,
+  flex-end,
+  center,
+  baseline,
+  stretch
+);
+
+@each $item in $align-items {
+  .align-items-#{$item} {
+    align-items: $item;
+  }
+}
+
+$align-content: (
+  flex-start,
+  flex-end,
+  center,
+  space-between,
+  space-around,
+  stretch
+);
+@each $item in $align-content {
+  .align-content-#{$item} {
+    align-content: $item;
+  }
+}
+
+$align-self: (
+  auto,
+  flex-start,
+  flex-end,
+  center,
+  baseline,
+  stretch
+);
+@each $item in $align-self {
+  .align-self-#{$item} {
+    align-self: $item;
+  }
+}
+
+$flex-grow: (
+  1, 2, 3, 4, 5, 6, 7, 8, 9
+);
+@each $item in $flex-grow {
+  .flex-grow-#{$item} {
+    flex-grow: $item;
+  }
+}
+
+$flex-shrink: (
+  1, 2, 3, 4, 5, 6, 7, 8, 9
+);
+@each $item in $flex-shrink {
+  .flex-shrink-#{$item} {
+    flex-shrink: $item;
+  }
+}

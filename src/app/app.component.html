@@ -1,5 +1,4 @@
 <ng-template #unauthor>
   <app-auth-layout></app-auth-layout>
 </ng-template>
-<app-dashboard-layout *ngIf="auth.isLoggedIn; else unauthor"></app-dashboard-layout>
-
+<app-dashboard-layout *ngIf="auth.isLoggedIn | async ; else unauthor"></app-dashboard-layout>

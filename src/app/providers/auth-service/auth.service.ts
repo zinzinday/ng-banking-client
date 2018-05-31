@@ -16,8 +16,10 @@ export class AuthService {
 
   }
 
-  get isLoggedIn(): boolean {
-    return !!this.credential;
+  get isLoggedIn(): Observable<boolean> {
+    return this.credential.pipe(map((data) => {
+      return !!data;
+    }));
   }
 
   get isRoleSupper(): Observable<boolean> {

@@ -17,7 +17,17 @@ import {FinanceBankAccountComponent} from './dashboard/finances/finance-bank-acc
 import {AuthLayoutComponent} from './auth/auth-layout/auth-layout.component';
 import {LayoutComponent} from './dashboard/layout/layout.component';
 import {LayoutModule} from '@angular/cdk/layout';
-import {MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatTabsModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatSidenavModule,
+  MatTabsModule,
+  MatToolbarModule
+} from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
 import {FinanceDepositComponent} from './dashboard/finances/finance-deposit/finance-deposit.component';
 import {FinanceWithdrawalComponent} from './dashboard/finances/finance-withdrawal/finance-withdrawal.component';
@@ -26,6 +36,8 @@ import {FinanceLayoutComponent} from './dashboard/finances/finance-layout/financ
 import {SettingLayoutComponent} from './dashboard/settings/setting-layout/setting-layout.component';
 import {FinanceLoansComponent} from './dashboard/finances/finance-loans/finance-loans.component';
 import {SummaryComponent} from './dashboard/summary/summary.component';
+import {WelcomeComponent} from './auth/welcome/welcome.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -48,7 +60,8 @@ import {SummaryComponent} from './dashboard/summary/summary.component';
     FinanceLayoutComponent,
     SettingLayoutComponent,
     FinanceLoansComponent,
-    SummaryComponent
+    SummaryComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +74,12 @@ import {SummaryComponent} from './dashboard/summary/summary.component';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MatTabsModule
+    MatTabsModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

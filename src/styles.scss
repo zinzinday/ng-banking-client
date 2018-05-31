@@ -1,7 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
 
-body { margin: 0; }
-router-outlet{
-  min-height: 100%;
+body {
+  margin: 0;
+}
+
+/* @imported flex basic*/
+@import "scss/flex";
+
+.full-height {
   height: 100%;
 }
+
+.full-width {
+  width: 100%;
+}
+
+.padding-1 {
+  padding: 1em;
+}
+
+.padding-2 {
+  padding: 2em;
+}
+
+.center-box {
+  max-width: 25em;
+  min-width: 30em;
+}
+
+.container {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  .container-center {
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    flex-direction: column;
+
+  }
+}
+
+
+
