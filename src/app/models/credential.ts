@@ -1,4 +1,4 @@
 export interface Credential {
   type: string;
-  accessToken: string;
+  access_token: string;
 }

@@ -7,6 +7,8 @@ import {Observable} from 'rxjs';
 import {ResponseBody} from '../../models/response-body';
 import {map, mergeMap} from 'rxjs/internal/operators';
 import {Credential} from '../../models/credential';
+import {Banking} from '../../models/banking';
+import {Profile} from '../../models/profile';
 
 
 @Injectable({
@@ -23,19 +25,15 @@ export class RestfulService {
     return this.endpoint + path;
   }
 
-  /**
-   *
-   * @param {Credential} credential
-   * @param options
-   * @returns {any}
-   */
-  private optionsWithCredential(credential: Credential, options?: any): any {
+
+  private optionsWithCredential(credential: Credential, options: any = {headers: {}}): any {
+    console.log('options', options);
     if (!options) {
       options = {headers: {}};
     } else if (options && !options.hasOwnProperty('headers')) {
       options.headers = {};
     }
-    Object.assign(options.headers, {Authorization: credential.type + ' ' + credential.accessToken});
+    Object.assign(options.headers, {Authorization: credential.type + ' ' + credential.access_token});
     return options;
   }
 
@@ -48,15 +46,11 @@ export class RestfulService {
    */
   private get(path: string, authorized?: boolean, options?: any): Observable<ResponseBody> {
     if (authorized) {
-      return this.auth.credential.pipe(mergeMap((credential: Credential) => {
-        return this.http.get(this.url(path), this.optionsWithCredential(credential, options)).pipe(
-          map((body: any) => body)
-        );
-      }));
+      return this.pipeBody(this.auth.credential.pipe(mergeMap((credential: Credential) => {
+        return this.http.get(this.url(path), this.optionsWithCredential(credential, options));
+      })));
     } else {
-      return this.http.get(this.url(path), options).pipe(map((body: any) => {
-        return body;
-      }));
+      return this.pipeBody(this.http.get(this.url(path), options));
     }
   }
 
@@ -70,18 +64,11 @@ export class RestfulService {
    */
   private post(path: string, value?: any, authorized?: boolean, options?: any): Observable<ResponseBody> {
     if (authorized) {
-
-      return this.auth.credential.pipe(mergeMap((credential: Credential) => {
-        return this.http.post(this.url(path), value, this.optionsWithCredential(credential, options))
-          .pipe(map((body: any) => body));
-      }));
-
+      return this.pipeBody(this.auth.credential.pipe(mergeMap((credential: Credential) => {
+        return this.http.post(this.url(path), value, this.optionsWithCredential(credential, options));
+      })));
     } else {
-
-      return this.http.post(this.url(path), value, options).pipe(map((body: any) => {
-        return body;
-      }));
-
+      return this.pipeBody(this.http.post(this.url(path), value, options));
     }
 
   }
@@ -94,10 +81,9 @@ export class RestfulService {
    * @returns {Observable<ResponseBody>}
    */
   private put(path: string, value?: any, options?: any): Observable<ResponseBody> {
-    return this.auth.credential.pipe(mergeMap((credential: Credential) => {
-      return this.http.put(this.url(path), value, this.optionsWithCredential(credential, options))
-        .pipe(map((body: any) => body));
-    }));
+    return this.pipeBody(this.auth.credential.pipe(mergeMap((credential: Credential) => {
+      return this.http.put(this.url(path), value, this.optionsWithCredential(credential, options));
+    })));
   }
 
   /**
@@ -122,12 +108,29 @@ export class RestfulService {
     }
   }
 
+  pipeBody(observable: Observable<Object>): Observable<ResponseBody> {
+    return observable.pipe(map((body: any) => body));
+  }
+
+  mapData(observable: Observable<Object>): Observable<any> {
+    return observable.pipe(map((body: ResponseBody) => {
+      if (body.success) {
+        return body.data;
+      }
+      return [];
+    }));
+  }
+
   login(value: any): Observable<ResponseBody> {
     return this.post('user/authorize', value);
   }
 
   register(value: any): Observable<ResponseBody> {
     return this.post('user', value);
+  }
+
+  get me(): Observable<Profile> {
+    return this.mapData(this.get('user/me', true, {headers: {'x-powered-by': 'Nghia Nguyen'}}));
   }
 
   requestPassword(value: any): Observable<ResponseBody> {
@@ -142,8 +145,8 @@ export class RestfulService {
     return this.put('user', value);
   }
 
-  get bankingList(): Observable<ResponseBody> {
-    return this.get('banking');
+  get bankingList(): Observable<Banking[]> {
+    return this.mapData(this.get('banking'));
   }
 
   get currencyList() {
