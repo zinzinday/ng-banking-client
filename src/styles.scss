@@ -1,11 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
-
 body {
   margin: 0;
 }
 
 /* @imported flex basic*/
 @import "scss/flex";
+.active {
+  background: blue;
+}
+
+.mat-card-title {
+  line-height: 40px;
+}
 
 .full-height {
   height: 100%;
@@ -23,9 +29,37 @@ body {
   padding: 2em;
 }
 
+.margin-top {
+  margin-top: 1em;
+}
+
 .center-box {
   max-width: 25em;
-  min-width: 30em;
+  min-width: 23em;
+}
+
+.auth-bg {
+  background: url("assets/auth-bg-0.jpg") no-repeat;
+  background-size: cover;
+
+}
+
+.auth-bg-1 {
+  background: url("assets/auth-bg-1.jpg") no-repeat;
+  background-size: cover;
+
+}
+
+.margin-left-auto {
+  margin-left: auto;
+}
+
+.vertical-align-baseline {
+  vertical-align: baseline;;
+}
+
+.vertical-align-middle {
+  vertical-align: middle;;
 }
 
 .container {
@@ -43,5 +77,9 @@ body {
   }
 }
 
+button .mat-progress-spinner svg{
+  position: relative;
+  vertical-align: middle;
+}
 
 

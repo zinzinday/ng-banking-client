@@ -1,7 +1,7 @@
 <div class="container">
   <div class="display-flex full-height"
-       [ngClass]="{'justify-content': layout.isHandset, 'padding-1': layout.isHandset, 'justify-content-center': !layout.isHandset,'align-items-center': !layout.isHandset}">
-    <div [ngClass]="{'flex-grow-1': layout.isHandset,'center-box': !layout.isHandset}">
+       [ngClass]="{'justify-content': layout.isHandset, 'justify-content-center': !layout.isHandset,'align-items-center': !layout.isHandset, 'auth-bg': !layout.isHandset}">
+    <div [ngClass]="{'flex-grow-1': layout.isHandset,'center-box': !layout.isHandset, 'padding-1': layout.isHandset}">
       <router-outlet></router-outlet>
     </div>
   </div>

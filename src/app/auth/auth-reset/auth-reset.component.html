@@ -1,3 +1,81 @@
-<p>
-  auth-reset works!
-</p>
+<ng-template #lookUser>
+  <form [formGroup]="lookForm" (ngSubmit)="onLook()">
+    <mat-card-title>
+      Looking for you
+    </mat-card-title>
+    <mat-form-field class="full-width">
+      <mat-label>User</mat-label>
+      <input matInput formControlName="user" placeholder="Email or phone">
+    </mat-form-field>
+    <div class="display-flex">
+      <span class="flex-grow-1"></span>
+      <button mat-raised-button [disabled]="lookForm.invalid" color="">
+        <mat-progress-spinner mode="indeterminate" diameter="24"></mat-progress-spinner>
+        Find Me
+      </button>
+    </div>
+  </form>
+</ng-template>
+
+<ng-template #request>
+  <form [formGroup]="requestForm">
+    <mat-card-title>
+      Request an verification
+    </mat-card-title>
+
+    <mat-label>Send verification code to</mat-label>
+    <mat-radio-group [formControlName]="'case'"
+                     class="display-flex flex-direction-column justify-content-space-between">
+      <mat-radio-button *ngFor="let contact of contacts" [value]="contact.id">{{contact.name}}</mat-radio-button>
+    </mat-radio-group>
+    <div class="display-flex margin-top">
+      <span class="flex-grow-1"></span>
+      <button mat-button (click)="step=0" color="warn">Not me!</button>
+      <button mat-raised-button [disabled]="requestForm.invalid" color="primary">Send code</button>
+    </div>
+  </form>
+</ng-template>
+
+<ng-template #confirm>
+  <form [formGroup]="confirmForm">
+    <mat-card-title>
+      Request an verification
+    </mat-card-title>
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Verification code" formControlName="code">
+      <mat-hint>Please check your contact to get verification code</mat-hint>
+    </mat-form-field>
+    <div class="display-flex margin-top">
+      <span class="flex-grow-1"></span>
+      <button mat-raised-button [disabled]="confirmForm.invalid" color="primary">Send code</button>
+    </div>
+  </form>
+</ng-template>
+
+<ng-template #newPassword>
+  <form [formGroup]="resetForm" (ngSubmit)="onGenerate()">
+    <mat-card-title>
+      Generate new password
+    </mat-card-title>
+    <mat-form-field class="full-width">
+      <input matInput placeholder="New password" type="password" formControlName="password">
+    </mat-form-field>
+    <div class="display-flex margin-top">
+      <span class="flex-grow-1"></span>
+      <button mat-raised-button [disabled]="resetForm.invalid" color="primary">
+        Send code</button>
+    </div>
+  </form>
+</ng-template>
+
+<mat-progress-bar mode="indeterminate" *ngIf="inProgress"></mat-progress-bar>
+<mat-card [ngClass]="{'mat-elevation-z0': layout.isHandset}">
+  <mat-card-content>
+    <div [ngSwitch]="step">
+      <ng-container *ngSwitchCase="0" [ngTemplateOutlet]="lookUser"></ng-container>
+      <ng-container *ngSwitchCase="1" [ngTemplateOutlet]="request"></ng-container>
+      <ng-container *ngSwitchCase="2" [ngTemplateOutlet]="confirm"></ng-container>
+      <ng-container *ngSwitchCase="3" [ngTemplateOutlet]="newPassword"></ng-container>
+    </div>
+  </mat-card-content>
+</mat-card>

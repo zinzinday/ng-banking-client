@@ -1,3 +1,33 @@
-<p>
-  finance-banking works!
-</p>
+<div class="mat-elevation-z8">
+  <mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.name }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="bankName">
+      <mat-header-cell *matHeaderCellDef>Organization Name</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.bankName }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-icon-button matTooltip="Withdrawal" color="warn">
+          <mat-icon>arrow_downward</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Deposit" color="primary">
+          <mat-icon>arrow_upward</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    <mat-paginator
+      [length]="dataSource.length"
+      [pageIndex]="0"
+      [pageSize]="1"
+      [pageSizeOptions]="[25, 50, 100, 250]">
+    </mat-paginator>
+  </mat-table>
+</div>

@@ -5,7 +5,7 @@ $display: (
 
 @each $item in $display {
   .display-#{$item} {
-    display: $item;
+    display: $item !important;
   }
 }
 

@@ -1,12 +1,15 @@
 import {Injectable} from '@angular/core';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
+import {MatSnackBar} from '@angular/material';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LayoutService {
   media: any;
-  constructor(private breakpointObserver: BreakpointObserver) {
+
+  constructor(private breakpointObserver: BreakpointObserver,
+              private snackBar: MatSnackBar) {
     this.subscriber();
   }
 
@@ -104,6 +107,10 @@ export class LayoutService {
         isWebLandscape: this.isWebLandscape,
       };
     });
+  }
+
+  alert(message, action: string = 'Dismiss', duration: number = 3000) {
+    this.snackBar.open(message, action, {duration: duration});
   }
 
 }

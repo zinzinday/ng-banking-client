@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {MatPaginator, MatSort} from '@angular/material';
+import {Banking} from '../../../models/banking';
+
 
 @Component({
   selector: 'app-finance-banking',
@@ -6,8 +9,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./finance-banking.component.scss']
 })
 export class FinanceBankingComponent implements OnInit {
+  @ViewChild(MatPaginator) pagination: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
-  constructor() { }
+  dataSource: Banking[] = [
+    {id: '1', name: 'Vietcombank', bankName: 'Ngoai thuong Viet Nam', swiftCode: null},
+    {id: '1', name: 'Vietinbank', bankName: 'Cong thuong Viet Nam', swiftCode: null},
+  ];
+  displayedColumns = ['name', 'bankName', 'actions'];
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

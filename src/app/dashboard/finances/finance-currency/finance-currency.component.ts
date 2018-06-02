@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator, MatSort } from '@angular/material';
+import { FinanceCurrencyDataSource } from './finance-currency-datasource';
 
 @Component({
   selector: 'app-finance-currency',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./finance-currency.component.scss']
 })
 export class FinanceCurrencyComponent implements OnInit {
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+  dataSource: FinanceCurrencyDataSource;
 
-  constructor() { }
+  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
+  displayedColumns = ['id', 'name'];
 
   ngOnInit() {
+    this.dataSource = new FinanceCurrencyDataSource(this.paginator, this.sort);
   }
-
 }

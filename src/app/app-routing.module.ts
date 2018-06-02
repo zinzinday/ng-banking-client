@@ -4,17 +4,16 @@ import {SettingLayoutComponent} from './dashboard/settings/setting-layout/settin
 import {FinanceLayoutComponent} from './dashboard/finances/finance-layout/finance-layout.component';
 import {AuthResetComponent} from './auth/auth-reset/auth-reset.component';
 import {AuthGuard} from './providers/auth-guard/auth.guard';
-import {WelcomeComponent} from './auth/welcome/welcome.component';
 import {AuthLoginComponent} from './auth/auth-login/auth-login.component';
 import {AuthRegisterComponent} from './auth/auth-register/auth-register.component';
+import {GuestGuard} from './providers/guest-guard/guest.guard';
 
 const routes: Routes = [
   {path: 'settings', component: SettingLayoutComponent, canActivate: [AuthGuard]},
   {path: 'finances', component: FinanceLayoutComponent, canActivate: [AuthGuard]},
-  {path: 'reset', component: AuthResetComponent, canDeactivate: [AuthGuard]},
-  {path: 'register', component: AuthRegisterComponent, canDeactivate: [AuthGuard]},
-  {path: 'login', component: AuthLoginComponent},
-  {path: '', component: WelcomeComponent},
+  {path: 'reset', component: AuthResetComponent, canActivate: [GuestGuard]},
+  {path: 'register', component: AuthRegisterComponent, canActivate: [GuestGuard]},
+  {path: '', component: AuthLoginComponent, canActivate: [GuestGuard]},
 ];
 
 @NgModule({

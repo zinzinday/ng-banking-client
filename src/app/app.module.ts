@@ -24,9 +24,17 @@ import {
   MatIconModule,
   MatInputModule,
   MatListModule,
+  MatMenuModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatRadioModule,
   MatSidenavModule,
+  MatSnackBarModule,
   MatTabsModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatSortModule, MatTooltipModule
 } from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
 import {FinanceDepositComponent} from './dashboard/finances/finance-deposit/finance-deposit.component';
@@ -38,6 +46,7 @@ import {FinanceLoansComponent} from './dashboard/finances/finance-loans/finance-
 import {SummaryComponent} from './dashboard/summary/summary.component';
 import {WelcomeComponent} from './auth/welcome/welcome.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {AuthService} from './providers/auth-service/auth.service';
 
 @NgModule({
   declarations: [
@@ -68,6 +77,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,
@@ -78,10 +90,19 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule,
-    ReactiveFormsModule
+    MatMenuModule,
+    MatSnackBarModule,
+    MatProgressBarModule,
+    MatRadioModule,
+    MatProgressSpinnerModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatTooltipModule,
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

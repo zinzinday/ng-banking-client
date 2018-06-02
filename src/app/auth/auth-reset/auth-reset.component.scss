@@ -1,0 +1,15 @@
+.mat-radio-button {
+  margin: 5px 0;
+}
+
+button {
+  .mat-progress-spinner, mat-spinner {
+    display: inline;
+    svg {
+      position: relative !important;
+      vertical-align: middle;
+    }
+  }
+}
+
+
